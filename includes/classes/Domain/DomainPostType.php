@@ -1,4 +1,5 @@
 <?php
+
 namespace WPDM\Domain;
 
 use WPDM\PostType;
@@ -48,6 +49,8 @@ class DomainPostType extends PostType {
 
 		$options['menu_icon']     = 'dashicons-admin-site';
 		$options['menu_position'] = 5;
+		$options['public']        = false;
+		$options['show_in_rest']  = false;
 
 		if ( ! isset( $options['taxonomies'] ) ) {
 			$options['taxonomies'] = array();
@@ -55,7 +58,7 @@ class DomainPostType extends PostType {
 
 		$options['taxonomies'][] = 'category';
 		$options['taxonomies'][] = 'post_tag';
-		$options['supports']     = array( 'title', 'editor', 'thumbnail' );
+		$options['supports']     = array( 'title', 'thumbnail' );
 
 		return $options;
 	}

@@ -1,6 +1,7 @@
 <?php
 namespace WPDM;
 
+use WPDM\Domain\DomainMetabox;
 use \WPDM\Domain\DomainPostType;
 
 
@@ -13,10 +14,18 @@ class Domains {
 	public $domain;
 
 	/**
+	 * Instance of the domain metabox
+	 *
+	 * @var \WPDM\Domain\DomainMetabox
+	 */
+	public $domain_metabox;
+
+	/**
 	 * Articles constructor.
 	 */
 	public function __construct() {
-		$this->domain = new DomainPostType;
+		$this->domain         = new DomainPostType();
+		$this->domain_metabox = new DomainMetabox( $this->domain->get_name() );
 	}
 
 	/**
@@ -24,7 +33,7 @@ class Domains {
 	 */
 	public function register() {
 		$this->domain->register();
-
+		$this->domain_metabox->register();
 	}
 
 	/**
