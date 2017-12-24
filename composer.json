@@ -1,0 +1,23 @@
+{
+  "name": "wordpress-domain-manager",
+  "description": "WordPress Domain Manager",
+  "version": "0.1.0",
+  "type": "wordpress-plugin",
+  "keywords": [],
+  "homepage": "https://www.ivankristianto.com/wp-domain-manager",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Ivan Kristianto",
+      "email": "ivan@ivankristianto.com",
+      "homepage": "https://www.ivankristianto.com",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+  }
+}
