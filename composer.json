@@ -27,7 +27,7 @@
       "WPDM\\": "includes/classes"
     },
     "files": [
-
+      "includes/functions/helpers.php"
     ]
   },
   "extra": {
