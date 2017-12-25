@@ -18,11 +18,19 @@ class Core {
 	public $servers;
 
 	/**
+	 * Instance of the Whois
+	 *
+	 * @var \WPDM\Whois\Whois
+	 */
+	public $whois;
+
+	/**
 	 * Core constructor.
 	 */
 	public function __construct() {
 		$this->domains = new Domains();
 		$this->servers = new Servers();
+		$this->whois   = new Whois\Whois();
 	}
 
 	/**
