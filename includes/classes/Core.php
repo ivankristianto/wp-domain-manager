@@ -25,12 +25,20 @@ class Core {
 	public $whois;
 
 	/**
+	 * Instance of the IndexChecker
+	 *
+	 * @var \WPDM\Google\IndexChecker
+	 */
+	public $index_checker;
+
+	/**
 	 * Core constructor.
 	 */
 	public function __construct() {
-		$this->domains = new Domains();
-		$this->servers = new Servers();
-		$this->whois   = new Whois\Whois();
+		$this->domains       = new Domains();
+		$this->servers       = new Servers();
+		$this->whois         = new Whois\Whois();
+		$this->index_checker = new Google\IndexChecker();
 	}
 
 	/**
