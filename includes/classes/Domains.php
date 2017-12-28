@@ -4,6 +4,11 @@ namespace WPDM;
 use WPDM\Domain\DomainMetabox;
 use \WPDM\Domain\DomainPostType;
 
+const LAST_UPDATE_META_KEY  = 'wpdm_domain_last_update';
+const EXPIRED_DATE_META_KEY = 'wpdm_domain_expiration_date';
+const NAMESERVERS_META_KEY  = 'wpdm_domain_nameservers';
+const UPTIME_META_KEY       = 'wpdm_domain_uptime';
+const GOOGLE_INDEX_META_KEY = 'wpdm_domain_google_index';
 
 class Domains {
 	/**

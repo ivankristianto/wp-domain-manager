@@ -32,6 +32,13 @@ class Core {
 	public $index_checker;
 
 	/**
+	 * Instance of the Jobs
+	 *
+	 * @var \WPDM\Jobs\Core
+	 */
+	public $jobs;
+
+	/**
 	 * Core constructor.
 	 */
 	public function __construct() {
@@ -39,6 +46,7 @@ class Core {
 		$this->servers       = new Servers();
 		$this->whois         = new Whois\Whois();
 		$this->index_checker = new Google\IndexChecker();
+		$this->jobs          = new Jobs\Core();
 	}
 
 	/**
@@ -50,6 +58,10 @@ class Core {
 
 		$this->domains->register();
 		$this->servers->register();
+		$this->jobs->register();
+
+//		$test = $this->whois->get_expired_date( 'betdeal.blog' );
+//		echo '<pre>';var_dump($test);exit;
 
 		do_action( 'wpdm_loaded' );
 	}

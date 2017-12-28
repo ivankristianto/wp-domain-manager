@@ -41,6 +41,13 @@ define( 'WPDM_INC', WPDM_PATH . 'includes/' );
 define( 'WPDM_POST_TYPE_DOMAIN', 'domain' );
 define( 'WPDM_TAXONOMY_SERVER', 'server' );
 
+/**
+ * WP CLI Commands
+ */
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once( 'includes/bin/wp-cli.php' );
+}
+
 // Activation/Deactivation
 register_activation_hook( __FILE__, 'wpdm_activate' );
 register_deactivation_hook( __FILE__, 'wpdm_deactivate' );

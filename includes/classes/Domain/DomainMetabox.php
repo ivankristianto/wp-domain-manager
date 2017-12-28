@@ -23,8 +23,8 @@ class DomainMetabox extends Metabox {
 	function __construct( $post_type ) {
 		$this->meta_keys = array(
 			'domain' => array(
-				'key'         => 'wpdm_domain_name',
-				'label'       => 'Domain Name (without http:// or https://)',
+				'key'         => 'wpdm_domain_url',
+				'label'       => 'Full URL (with http:// or https://)',
 				'sanitize_cb' => 'sanitize_text_field',
 			),
 			'notes'  => array(
@@ -72,7 +72,7 @@ class DomainMetabox extends Metabox {
 			<tbody>
 			<tr>
 				<th scope="row">
-					<label for="<?php echo esc_attr( $this->domain->key ); ?>">Domain</label>
+					<label for="<?php echo esc_attr( $this->domain->key ); ?>"><?php echo esc_html( $this->domain->label ); ?></label>
 				</th>
 				<td>
 					<input type="text" class="large-text" name="<?php echo esc_attr( $this->domain->key ); ?>" value="<?php echo esc_attr( $domain ); ?>">
@@ -80,7 +80,7 @@ class DomainMetabox extends Metabox {
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="<?php echo esc_attr( $this->notes->key ); ?>">Notes</label>
+					<label for="<?php echo esc_attr( $this->notes->key ); ?>"><?php echo esc_html( $this->notes->label ); ?></label>
 				</th>
 				<td>
 				<textarea name="<?php echo esc_attr( $this->notes->key ); ?>" id="<?php echo esc_attr( $this->notes->key ); ?>" rows="10" class="large-text">

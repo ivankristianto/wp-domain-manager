@@ -40,14 +40,14 @@ class IndexChecker {
 		}
 
 		$body          = wp_remote_retrieve_body( $response );
-		$regex_pattern = '/About (.*?) results/';
+		$regex_pattern = '/(About|Sekitar) (.*?) (results|hasil)/';
 
 		preg_match_all( $regex_pattern, $body, $matches, PREG_SET_ORDER, 0 );
 
-		if ( ! isset( $matches[0][1] ) ) {
+		if ( ! isset( $matches[0][2] ) ) {
 			return false;
 		}
 
-		return (int) $matches[0][1];
+		return (int) $matches[0][2];
 	}
 }
