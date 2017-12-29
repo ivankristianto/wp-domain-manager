@@ -60,7 +60,7 @@ class Core {
 		$this->servers->register();
 		$this->jobs->register();
 
-//		$test = $this->whois->get_expired_date( 'betdeal.blog' );
+//		$test = $this->whois->get_nameservers( 'ivankristianto.com' );
 //		echo '<pre>';var_dump($test);exit;
 
 		do_action( 'wpdm_loaded' );

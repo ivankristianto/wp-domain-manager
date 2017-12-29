@@ -116,7 +116,7 @@ class DomainPostType extends PostType {
 				</div>
 				<div class="item">
 					<span class="label">Expired:</span>
-					<span class="value"><?php echo esc_html( $expired_date ); ?></span>
+					<span class="value"><?php echo esc_html( date( 'F j, Y', strtotime( $expired_date) ) ); ?></span>
 				</div>
 				<div class="item">
 					<span class="label">Nameservers:</span>

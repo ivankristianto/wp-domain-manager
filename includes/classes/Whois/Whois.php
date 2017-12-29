@@ -61,7 +61,7 @@ class Whois {
 		$result = $this->php_whois->lookup( $domain );
 		if ( isset( $result['regrinfo'] ) && is_array( $result['regrinfo'] ) &&
 			 isset( $result['regrinfo']['domain'] ) && isset( $result['regrinfo']['domain']['nserver'] ) ) {
-			return $result['regrinfo']['domain']['nserver'];
+			return array_keys( $result['regrinfo']['domain']['nserver'] );
 		}
 
 		$nameservers   = array();
