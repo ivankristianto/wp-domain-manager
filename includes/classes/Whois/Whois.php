@@ -15,7 +15,7 @@ class Whois {
 	 * Whois constructor.
 	 */
 	function __construct() {
-		$this->php_whois            = new \Whois();
+		$this->php_whois            = new \phpWhois\Whois();
 		$this->php_whois->deepWhois = true;
 	}
 
