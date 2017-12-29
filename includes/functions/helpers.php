@@ -36,3 +36,24 @@ function is_website_online( $url ) {
 	$response_code = wp_remote_retrieve_response_code( $response );
 	return ( 200 === $response_code );
 }
+
+/**
+ * Update Post Modified Date
+ *
+ * @param int $post_id
+ */
+function update_post_modified_dates( $post_id ) {
+	global $wpdb;
+
+	// Update the post_modified dates for each modified post.
+	$wpdb->query(
+		$wpdb->prepare(
+			"UPDATE $wpdb->posts SET `post_modified` = %s, `post_modified_gmt` = %s WHERE `ID` = %d",
+			current_time( 'mysql' ),
+			current_time( 'mysql', 1 ),
+			$post_id
+		)
+	);
+
+	clean_post_cache( $post_id );
+}

@@ -61,9 +61,14 @@ register_deactivation_hook( __FILE__, 'wpdm_deactivate' );
  * @return void
  */
 function wpdm_activate() {
+	$wpdm_core = wpdm_core();
+
 	// First load the init scripts in case any rewrite functionality is being loaded
-	init();
+	$wpdm_core->init();
 	flush_rewrite_rules();
+	$wpdm_core->jobs->register_cron();
+
+
 }
 
 /**

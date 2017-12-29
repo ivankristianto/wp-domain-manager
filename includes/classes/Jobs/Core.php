@@ -7,13 +7,14 @@ class Core {
 		// Actions
 		add_action( 'save_post', array( $this, 'check_single_domain' ), 10, 1 );
 		add_action( 'schedule_wpdm_single_domain', array( __CLASS__, 'fetch_single_domain_data' ), 10, 1 );
+		add_action( 'schedule_wpdm_bulk_domain', array( __CLASS__, 'process_bulk_domain_data' ), 10, 1 );
 	}
 	/**
 	 * Schedule an event to check domain
 	 *
 	 * @param int $post_id
 	 */
-	function check_single_domain( $post_id ) {
+	public function check_single_domain( $post_id ) {
 		if ( defined( 'WP_CLI' ) ) {
 			return;
 		}
@@ -29,6 +30,15 @@ class Core {
 		// Finally, the last check.
 		if ( 'publish' === get_post_status( $post_id ) ) {
 			wp_schedule_single_event( time() + 10, 'schedule_wpdm_single_domain', [ $post_id ] );
+		}
+	}
+
+	/**
+	 * Register our Cron Event
+	 */
+	public function register_cron() {
+		if ( ! wp_next_scheduled( 'schedule_wpdm_bulk_domain' ) ) {
+			wp_schedule_event( time(), 'hourly', 'schedule_wpdm_bulk_domain' );
 		}
 	}
 
@@ -67,10 +77,31 @@ class Core {
 			update_post_meta( $post_id, \WPDM\NAMESERVERS_META_KEY, $nameservers );
 			update_post_meta( $post_id, \WPDM\UPTIME_META_KEY, $is_online );
 			update_post_meta( $post_id, \WPDM\GOOGLE_INDEX_META_KEY, $google_index );
+
+			update_post_modified_dates( $post_id );
 		} catch ( \Exception $ex ) {
-
+			error_log( $ex->getMessage() );
 		}
+	}
 
+	/**
+	 * Get 10 least modified posts and process
+	 */
+	public static function process_bulk_domain_data() {
+		$args  = array(
+			'post_type'      => WPDM_POST_TYPE_DOMAIN,
+			'orderby'        => 'date',
+			'order'          => 'ASC',
+			'posts_per_page' => 10,
+			'fields'         => 'ids',
+		);
+		$query = new \WP_Query( $args );
+
+		$post_ids = $query->posts;
+		foreach ( $post_ids as $post_id ) {
+			self::fetch_single_domain_data( $post_id );
+			sleep( 2 );
+		}
 	}
 
 }
