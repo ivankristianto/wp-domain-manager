@@ -66,6 +66,6 @@ class WPDM_CLI_Command extends WP_CLI_Command {
 			\WP_CLI::log( $nameservers );
 		}
 		\WP_CLI::log( __( 'Online Status: ', 'wpdm' ) . $uptime );
-		\WP_CLI::log( __( 'Google Index: s', 'wpdm' ) . $google_index );
+		\WP_CLI::log( __( 'Google Index: ', 'wpdm' ) . $google_index );
 	}
 }
