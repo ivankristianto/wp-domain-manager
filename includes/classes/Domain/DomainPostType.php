@@ -78,8 +78,8 @@ class DomainPostType extends PostType {
 		$inserted['status']    = __( 'Status', 'ck' );
 
 		$defaults = array_slice( $defaults, 0, 2, true ) +
-		            $inserted +
-		            array_slice( $defaults, 2, null, true );
+					$inserted +
+					array_slice( $defaults, 2, null, true );
 
 		return $defaults;
 	}
@@ -94,33 +94,45 @@ class DomainPostType extends PostType {
 		if ( 'permalink' === $column_name ) {
 			$post      = get_post( $post_id );
 			$permalink = get_post_meta( $post_id, 'wpdm_domain_url', true );
+			$uptime    = get_post_meta( $post_id, \WPDM\UPTIME_META_KEY, true );
 
 			if ( 'publish' === $post->post_status ) {
 				$permalink = sprintf( '<a href="%1$s" target="_blank">%1$s</a>', esc_url( $permalink ) );
 			}
 
 			echo wp_kses_post( $permalink );
+			?>
+			<div class="item">
+				<span class="label"><?php esc_html_e( 'Server Status:', 'wpdm' ); ?></span>
+				<span class="value"><?php echo ( 1 === (int) $uptime ) ? 'Good' : 'Down'; ?></span>
+			</div>
+			<?php
 		}
 
 		if ( 'status' === $column_name ) {
 			$last_checked = get_post_meta( $post_id, \WPDM\LAST_UPDATE_META_KEY, true );
 			$expired_date = get_post_meta( $post_id, \WPDM\EXPIRED_DATE_META_KEY, true );
 			$nameservers  = get_post_meta( $post_id, \WPDM\NAMESERVERS_META_KEY, true );
-			$uptime       = get_post_meta( $post_id, \WPDM\UPTIME_META_KEY, true );
 			$google_index = get_post_meta( $post_id, \WPDM\GOOGLE_INDEX_META_KEY, true );
+
+			if ( (int) $google_index > 0 ) {
+				$google_index = $google_index . ' results';
+			} else {
+				$google_index = __( 'No Index', 'wpdm' );
+			}
 			?>
 			<div class="statuswrap">
 				<div class="item">
-					<span class="label">Last Checked:</span>
+					<span class="label"><?php esc_html_e( 'Last Checked:', 'wpdm' ); ?></span>
 					<span class="value"><?php echo esc_html( date( 'F j, Y', (int) $last_checked ) ); ?></span>
 				</div>
 				<div class="item">
-					<span class="label">Expired:</span>
+					<span class="label"><?php esc_html_e( 'Expired:', 'wpdm' ); ?></span>
 					<span class="value"><?php echo esc_html( date( 'F j, Y', strtotime( $expired_date ) ) ); ?></span>
 				</div>
 				<div class="item">
-					<span class="label">Nameservers:</span>
-					<span class="value">
+					<span class="label"><?php esc_html_e( 'Nameservers:', 'wpdm' ); ?></span>
+					<span class="value"><br/>
 						<?php
 						if ( is_array( $nameservers ) ) {
 							foreach ( $nameservers as $nameserver ) {
@@ -132,13 +144,10 @@ class DomainPostType extends PostType {
 						?>
 					</span>
 				</div>
+
 				<div class="item">
-					<span class="label">Server Status:</span>
-					<span class="value"><?php echo ( 1 === (int) $uptime ) ? 'Good' : 'Down'; ?></span>
-				</div>
-				<div class="item">
-					<span class="label">Google Index:</span>
-					<span class="value"><?php echo esc_html( $google_index ); ?> results</span>
+					<span class="label"><?php esc_html_e( 'Google Index:', 'wpdm' ); ?></span>
+					<span class="value"><?php echo esc_html( $google_index ); ?></span>
 				</div>
 			</div>
 			<?php
