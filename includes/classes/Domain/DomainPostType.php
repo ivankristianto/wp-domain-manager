@@ -133,7 +133,7 @@ class DomainPostType extends PostType {
 					</span>
 				</div>
 				<div class="item">
-					<span class="label">Online:</span>
+					<span class="label">Server Status:</span>
 					<span class="value"><?php echo ( 1 === (int) $uptime ) ? 'Good' : 'Down'; ?></span>
 				</div>
 				<div class="item">
