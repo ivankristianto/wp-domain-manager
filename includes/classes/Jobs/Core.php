@@ -90,7 +90,7 @@ class Core {
 	public static function process_bulk_domain_data() {
 		$args  = array(
 			'post_type'      => WPDM_POST_TYPE_DOMAIN,
-			'orderby'        => 'date',
+			'orderby'        => 'modified',
 			'order'          => 'ASC',
 			'posts_per_page' => 10,
 			'fields'         => 'ids',

@@ -11,7 +11,7 @@ class DomainPostType extends PostType {
 	public function register() {
 		parent::register();
 
-		add_filter( 'manage_posts_columns', array( $this, 'posts_columns_head' ), 11 );
+		add_filter( 'manage_posts_columns', array( $this, 'posts_columns_head' ), 11, 2 );
 		add_action( 'manage_posts_custom_column', array( $this, 'posts_columns_content' ), 10, 2 );
 	}
 
@@ -73,7 +73,11 @@ class DomainPostType extends PostType {
 	 *
 	 * @return array
 	 */
-	function posts_columns_head( $defaults ) {
+	function posts_columns_head( $defaults, $post_type ) {
+		if ( WPDM_POST_TYPE_DOMAIN !== $post_type ) {
+			return $defaults;
+		}
+
 		$inserted['permalink'] = __( 'Permalink', 'ck' );
 		$inserted['status']    = __( 'Status', 'ck' );
 
