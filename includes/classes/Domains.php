@@ -14,14 +14,14 @@ class Domains {
 	/**
 	 * Instance of the domain post type
 	 *
-	 * @var \WPDM\Domain\DomainPostType
+	 * @var DomainPostType
 	 */
 	public $domain;
 
 	/**
 	 * Instance of the domain metabox
 	 *
-	 * @var \WPDM\Domain\DomainMetabox
+	 * @var DomainMetabox
 	 */
 	public $domain_metabox;
 

@@ -7,7 +7,7 @@ class Servers {
 	/**
 	 * Instance of the domain post type
 	 *
-	 * @var \WPDM\Server\ServerTaxonomy
+	 * @var ServerTaxonomy
 	 */
 	public $server_taxonomy;
 

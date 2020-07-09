@@ -11,6 +11,8 @@
  * License:     GPL-2.0+
  */
 
+use WPDM\Core;
+
 /**
  * Copyright (c) 2017 Ivan Kristianto (email : ivan@ivankristianto.com)
  *
@@ -45,7 +47,7 @@ define( 'WPDM_TAXONOMY_SERVER', 'server' );
  * WP CLI Commands
  */
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
-	require_once( 'includes/bin/wp-cli.php' );
+	require_once( 'bin/wp-cli.php' );
 }
 
 // Activation/Deactivation
@@ -85,8 +87,8 @@ function wpdm_deactivate() {
 /**
  * Initializes core plugin and returns its instance.
  *
- * @global \WPDM\Core $wpdm_core
- * @return \WPDM\Core
+ * @global Core $wpdm_core
+ * @return Core
  */
 function wpdm_core() {
 	global $wpdm_core;

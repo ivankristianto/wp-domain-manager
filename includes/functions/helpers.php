@@ -1,5 +1,7 @@
 <?php
 
+namespace WPDM;
+
 /**
  * Check if website is online
  *
@@ -34,6 +36,7 @@ function is_website_online( $url ) {
 	}
 
 	$response_code = wp_remote_retrieve_response_code( $response );
+
 	return ( 200 === $response_code );
 }
 

@@ -2,39 +2,42 @@
 
 namespace WPDM;
 
+use WPDM\Google\IndexChecker;
+use WPDM\Whois\Whois;
+
 class Core {
 	/**
 	 * Instance of the Domains
 	 *
-	 * @var \WPDM\Domains
+	 * @var Domains
 	 */
 	public $domains;
 
 	/**
 	 * Instance of the Servers
 	 *
-	 * @var \WPDM\Servers
+	 * @var Servers
 	 */
 	public $servers;
 
 	/**
 	 * Instance of the Whois
 	 *
-	 * @var \WPDM\Whois\Whois
+	 * @var Whois
 	 */
 	public $whois;
 
 	/**
 	 * Instance of the IndexChecker
 	 *
-	 * @var \WPDM\Google\IndexChecker
+	 * @var IndexChecker
 	 */
 	public $index_checker;
 
 	/**
 	 * Instance of the Jobs
 	 *
-	 * @var \WPDM\Jobs\Core
+	 * @var Jobs\Core
 	 */
 	public $jobs;
 
