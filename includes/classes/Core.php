@@ -47,7 +47,7 @@ class Core {
 	public function __construct() {
 		$this->domains       = new Domains();
 		$this->servers       = new Servers();
-		$this->whois         = new Whois\Whois();
+		$this->whois         = new Whois();
 		$this->index_checker = new Google\IndexChecker();
 		$this->jobs          = new Jobs\Core();
 	}

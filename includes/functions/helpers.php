@@ -3,18 +3,12 @@
 namespace WPDM;
 
 /**
- * Check if website is online
+ * Get default wp_remote_get args
  *
- * @param $url
- *
- * @return bool
+ * @return array
  */
-function is_website_online( $url ) {
-	if ( false === strpos( $url, 'http' ) ) {
-		$url = 'https://' . $url;
-	}
-
-	$args     = array(
+function get_remote_args() {
+	return array(
 		'timeout'     => 5,
 		'redirection' => 5,
 		'httpversion' => '1.0',
@@ -29,7 +23,22 @@ function is_website_online( $url ) {
 		'stream'      => false,
 		'filename'    => null,
 	);
-	$response = wp_remote_get( $url, $args );
+}
+
+
+/**
+ * Check if website is online
+ *
+ * @param $url
+ *
+ * @return bool
+ */
+function is_website_online( $url ) {
+	if ( false === strpos( $url, 'http' ) ) {
+		$url = 'https://' . $url;
+	}
+
+	$response = wp_remote_get( $url, get_remote_args() );
 
 	if ( ! is_array( $response ) ) {
 		return false;

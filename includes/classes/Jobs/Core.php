@@ -69,7 +69,7 @@ class Core {
 		try {
 			$expired_date = $wpdm_core->whois->get_expired_date( $domain );
 			$nameservers  = $wpdm_core->whois->get_nameservers( $domain );
-			$is_online    = is_website_online( $url );
+			$is_online    = \WPDM\is_website_online( $url );
 			$google_index = $wpdm_core->index_checker->get_result( $domain );
 
 			update_post_meta( $post_id, \WPDM\LAST_UPDATE_META_KEY, time() );
@@ -78,7 +78,7 @@ class Core {
 			update_post_meta( $post_id, \WPDM\UPTIME_META_KEY, $is_online );
 			update_post_meta( $post_id, \WPDM\GOOGLE_INDEX_META_KEY, $google_index );
 
-			update_post_modified_dates( $post_id );
+			\WPDM\update_post_modified_dates( $post_id );
 		} catch ( \Exception $ex ) {
 			error_log( $ex->getMessage() );
 		}
