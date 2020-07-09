@@ -1,39 +1,74 @@
 {
-  "name": "wordpress-domain-manager",
+  "name": "ivankristianto/wp-domain-manager",
   "title": "WordPress Domain Manager",
   "description": "WordPress Domain Manager",
   "version": "0.1.0",
+  "license": "GPL-2.0",
   "homepage": "https://www.ivankristianto.com/wp-domain-manager",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:ivankristianto/wp-domain-manager.git"
   },
   "author": {
     "name": "Ivan Kristianto",
-    "email": "ivan@ivankristianto.com",
-    "url": "https://www.ivankristianto.com"
+    "email": "ivan@ivankristianto.com"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-uglify": "^0.9.1",
-    "grunt-sass": "^1.0.0",
-    "autoprefixer": "^6.0.0",
-    "grunt-postcss": "^0.6.0",
-    "grunt-contrib-cssmin": "^0.12.3",
-    "grunt-eslint": "^18.1.0",
-    "grunt-jscs": "^2.8.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.0",
-    "grunt-contrib-compress": "^0.13.0",
-    "grunt-phpunit": "^0.3.6",
-    "load-grunt-config": "~0.17.2",
-    "load-grunt-tasks": "^3.3.0",
-    "glob": "~5.0.15",
-    "grunt-wp-readme-to-markdown": "^0.9.0",
-	"chai": "^3.5.0",
-    "grunt-mocha": "^1.0.0"
+    "@10up/babel-preset-default": "^1.0.0",
+    "@10up/eslint-config": "^2.0.0",
+    "@10up/stylelint-config": "^1.0.9",
+    "@babel/core": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "@wordpress/eslint-plugin": "^4.1.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "browserslist": "^4.8.3",
+    "caniuse-db": "^1.0.30001019",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "core-js": "^3.6.1",
+    "css-loader": "^3.4.1",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsdoc": "^22.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "lint-staged": "^9.5.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.4",
+    "stylelint": "^9.10.1",
+    "stylelint-config-wordpress": "^14.0.0",
+    "stylelint-declaration-use-variable": "^1.7.2",
+    "stylelint-order": "^2.2.1",
+    "stylelint-webpack-plugin": "^1.1.2",
+    "terser": "^4.6.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-fix-style-only-entries": "^0.4.0",
+    "webpack-merge": "^4.2.2",
+    "webpackbar": "^4.0.0"
   },
-  "keywords": []
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "keywords": [
+    "domain-manager",
+    "plugin"
+  ]
 }
